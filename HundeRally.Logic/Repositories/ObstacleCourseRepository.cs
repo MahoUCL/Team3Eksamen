@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static HundeRally.Logic.interfaces;
+using static HundeRally.Logic.IObstacleCourseRepository;
 using HundeRally.Logic.Data;
 using HundeRally.Logic.Entity;
 
@@ -46,6 +46,11 @@ namespace HundeRally.Logic.Repositories
         }
 
         public bool ValidateCourse(ObstacleCourse course)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveChangesAsync()
         {
             throw new NotImplementedException();
         }

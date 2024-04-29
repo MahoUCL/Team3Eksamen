@@ -1,4 +1,4 @@
-namespace HundeRally.API
+namespace HundeRally.WebAPI
 {
     public class WeatherForecast
     {

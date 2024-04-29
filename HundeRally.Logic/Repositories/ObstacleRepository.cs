@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using HundeRally.Logic.Data;
 using HundeRally.Logic.Entity;
 using HundeRally.Logic.Repositories;
-using static HundeRally.Logic.interfaces;
+using static HundeRally.Logic.IObstacleRepository;
 
 
 
@@ -23,7 +23,7 @@ namespace HundeRally.Logic.Repositories
 
         public IEnumerable<Obstacle> GetAllObstacles()
         {
-            throw new NotImplementedException();
+            return _context.Obstacles;
         }
 
         public void AddObstacle(Obstacle obstacle)
@@ -46,5 +46,9 @@ namespace HundeRally.Logic.Repositories
             throw new NotImplementedException();
         }
 
+        Task IObstacleRepository.SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

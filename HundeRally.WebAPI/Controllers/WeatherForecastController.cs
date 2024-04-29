@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace HundeRally.API.Controllers
+namespace HundeRally.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

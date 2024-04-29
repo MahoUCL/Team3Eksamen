@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.Client", "WebUI\WebUI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.Logic", "HundeRally.Logic\HundeRally.Logic.csproj", "{C812608D-5819-4D81-980A-DF0E22450423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.API", "HundeRally.API\HundeRally.API.csproj", "{49ACA23E-D488-45BB-BE03-8D3257638600}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.WebAPI", "HundeRally.WebAPI\HundeRally.WebAPI.csproj", "{38AD9C76-365A-4398-A6F9-473A8A467447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{C812608D-5819-4D81-980A-DF0E22450423}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C812608D-5819-4D81-980A-DF0E22450423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C812608D-5819-4D81-980A-DF0E22450423}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49ACA23E-D488-45BB-BE03-8D3257638600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49ACA23E-D488-45BB-BE03-8D3257638600}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49ACA23E-D488-45BB-BE03-8D3257638600}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49ACA23E-D488-45BB-BE03-8D3257638600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AD9C76-365A-4398-A6F9-473A8A467447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AD9C76-365A-4398-A6F9-473A8A467447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AD9C76-365A-4398-A6F9-473A8A467447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AD9C76-365A-4398-A6F9-473A8A467447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
