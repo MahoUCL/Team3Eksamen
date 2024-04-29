@@ -12,6 +12,6 @@ namespace HundeRally.WebAPI.Data
         }
 
         public DbSet<Obstacle> Obstacles { get; set; }
-
+        public DbSet<ObstacleCategory> ObstacleCategories { get; set; }
     }
 }
