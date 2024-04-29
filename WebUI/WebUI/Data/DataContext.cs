@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebUI.Entity;
+using WebUI.Domain.Entity;
 
 namespace WebUI.Data
 {
