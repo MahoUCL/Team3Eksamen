@@ -30,9 +30,9 @@ namespace HundeRally.WebAPI.Controllers
 
         //CRUD READ BY ID
         //Denne kommando henter en obstacle fra databasen baseret på Id
-        [HttpGet ]
+        [HttpGet]
         // [Route attributten nedenfor tillader klienten at få en bestemt obstacle baseret på Id]
-        [Route ("{Id}")]
+        [Route("{Id}")]
         public async Task<ActionResult<Obstacle>> GetObstacle(int Id)
         {
             var obstacle = await _context.Obstacles.FindAsync(Id);
@@ -73,7 +73,20 @@ namespace HundeRally.WebAPI.Controllers
 
         }
 
+        //CRUD DELETE
+        [HttpDelete]
+        public async Task<ActionResult<List<Obstacle>>> DeleteObstacle(int Id)
+        {
+            var dbObstacle = await _context.Obstacles.FindAsync(Id);
+            if (dbObstacle is null)
+                return NotFound("Obstacle not found");
 
+            _context.Obstacles.Remove(dbObstacle);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Obstacles.ToListAsync());
+
+        }
     }
 }
 
