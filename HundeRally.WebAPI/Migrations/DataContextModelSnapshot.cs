@@ -30,10 +30,10 @@ namespace HundeRally.WebAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -43,9 +43,12 @@ namespace HundeRally.WebAPI.Migrations
                     b.Property<int?>("Number")
                         .HasColumnType("int");
 
+                    b.Property<int>("ObstacleCategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ObstacleCategoryId");
 
                     b.ToTable("Obstacles");
                 });
@@ -64,18 +67,18 @@ namespace HundeRally.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ObstacleCategory");
+                    b.ToTable("ObstacleCategories");
                 });
 
             modelBuilder.Entity("HundeRally.WebAPI.Entities.Obstacle", b =>
                 {
-                    b.HasOne("HundeRally.WebAPI.Entities.ObstacleCategory", "Category")
+                    b.HasOne("HundeRally.WebAPI.Entities.ObstacleCategory", "category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("ObstacleCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("category");
                 });
 #pragma warning restore 612, 618
         }
