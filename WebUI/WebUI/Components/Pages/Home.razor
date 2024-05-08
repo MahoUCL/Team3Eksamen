@@ -1,15 +1,226 @@
 ﻿@page "/"
-
+@using Microsoft.AspNetCore.Components.Web
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid of Boxes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
 
-Welcome to your new app.
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 133px);
+            grid-template-rows: repeat(4, 142px);
+            gap: 2px;
+            margin: 140px;
+            position: relative;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+
+        .selected {
+            background-color: lightblue;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 140px;
+            left: 345px;
+            width: 960px;
+            height: 720px;
+            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
+            background-size: cover;
+            opacity: 0.3; /* Adjust the opacity as needed */
+            pointer-events: none; /* Makes the background image click-through */
+            z-index: 1/* Set the z-index to be behind everything */
+        }
+
+        .gallery {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .gallery-image {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="grid-container">
+        <!-- Row 1 -->
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+
+        <!-- Row 2 -->
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+
+        <!-- Row 3 -->
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+
+        <!-- Row 4 -->
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
+
+        
+    </div>
+    <!-- Background Image -->
+    <div class="background-image"></div>
+
+   
+    <!-- Gallery Modal -->
+    <div id="gallery" class="gallery">
+        <button onclick="closeGallery()">Exit</button>
+        <div class="gallery-images">
+            <!-- Image elements will be added dynamically here -->
+        </div>
+    </div>
+    @* </div> *@
 
 
-<WebUI.Components.Pages.ObstaclePages.Index/>
+    <script>
+        var selectedBox = null;
+
+        function selectBox(box) {
+            if (selectedBox !== null) {
+                selectedBox.classList.remove('selected');
+                selectedBox.style.backgroundColor = '';
+            }
+
+            box.classList.add('selected');
+            box.style.backgroundColor = "lightblue";
+
+            selectedBox = box;
+        }
+
+        function openGallery() {
+            var gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clear previous images
+
+            // Create exit button
+            var exitButton = document.createElement('button');
+            exitButton.textContent = 'Exit';
+            exitButton.onclick = function () {
+                closeGallery();
+            };
+            gallery.appendChild(exitButton);
+
+            // Loop through images and create image elements
+            // for (var i = 1; i <= 500; i++) {
+
+            //     var img = document.createElement('img');
+            //     img.className = 'gallery-image';
+            //     img.src = '/images/' + i + '.png'; // Adjust the path as needed
+            //     img.onerror = function () {
+            //         this.src = '/images/' + i + 1 + '.png';
+            //     }
+            //     img.onclick = function () {
+            //         selectImage(this);
+            //     };
+            //     gallery.appendChild(img);
 
 
+            // }
+            for (let i = 1; i < 100; i++) {
+                var img = document.createElement('img');
+                img.className = 'gallery-image';
+                var imageUrl = '/images/' + i + '.png'; // Adjust the path as needed
 
-}
+                // Check if the image exists
+                fetch(imageUrl, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            // If image exists, set the source and attach click event
+                            img.src = imageUrl;
+                            img.addEventListener('click', function () {
+                                selectImage(this);
+                            });
+                            gallery.appendChild(img);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking image existence:', error);
+
+                    });
+            }
+                                                                     
+            gallery.style.display = 'block';
+        }
+
+        function closeGallery() {
+            var gallery = document.getElementById('gallery');
+            gallery.style.display = 'none';
+        }
+
+        function selectImage(image) {
+            if (selectedBox !== null) {
+                selectedBox.style.backgroundImage = "url('" + image.src + "')";
+                selectedBox.style.backgroundSize = "contain";
+                selectedBox.style.backgroundPosition = "center";
+                selectedBox.innerHTML = '';
+                var gallery = document.getElementById('gallery');
+                gallery.style.display = 'none';
+            }
+        }
+
+
+    </script>
+    <h2>Click to select, Double-click for gallery</h2>
+</body>
+</html>
+
