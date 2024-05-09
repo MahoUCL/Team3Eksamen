@@ -160,31 +160,33 @@
             };
             gallery.appendChild(exitButton);
 
-            // Loop through images and create image elements
+            // //Loop through images and create image elements
             // for (var i = 1; i <= 500; i++) {
 
             //     var img = document.createElement('img');
             //     img.className = 'gallery-image';
             //     img.src = '/images/' + i + '.png'; // Adjust the path as needed
-            //     img.onerror = function () {
-            //         this.src = '/images/' + i + 1 + '.png';
-            //     }
+            //     // img.onerror = function () {
+            //     //     this.src = '/images/' + i + 1 + '.png';
+            //     // }
             //     img.onclick = function () {
             //         selectImage(this);
             //     };
             //     gallery.appendChild(img);
+               
 
-
-            // }
+            }
             for (let i = 1; i < 100; i++) {
                 var img = document.createElement('img');
                 img.className = 'gallery-image';
-                var imageUrl = '/images/' + i + '.png'; // Adjust the path as needed
+                var imageUrl = '/images/image' + i + '.png'; // Adjust the path as needed
 
                 // Check if the image exists
                 fetch(imageUrl, { method: 'HEAD' })
                     .then(response => {
+                        console.log(response)
                         if (response.ok) {
+                            console.log("Bobs your uncle")
                             // If image exists, set the source and attach click event
                             img.src = imageUrl;
                             img.addEventListener('click', function () {
@@ -193,13 +195,13 @@
                             gallery.appendChild(img);
                         }
                     })
-                    .catch(error => {
+                    catch(error => {
                         console.error('Error checking image existence:', error);
 
                     });
             }
-                                                                     
             gallery.style.display = 'block';
+
         }
 
         function closeGallery() {
