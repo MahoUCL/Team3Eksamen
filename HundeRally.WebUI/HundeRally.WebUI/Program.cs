@@ -59,6 +59,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
+    //Hvis counter.razor slettes, så skal denne slettes herunder.
     .AddAdditionalAssemblies(typeof(HundeRally.WebUI.Client._Imports).Assembly);
 
 // Add additional endpoints required by the Identity /Account Razor components.
