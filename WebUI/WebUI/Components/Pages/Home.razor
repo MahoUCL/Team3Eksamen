@@ -26,6 +26,7 @@
             max-height: calc(100vh - 100px);
             aspect-ratio: 15 / 11;
             z-index: -1;
+            pointer-events: auto;
         }
 
         .cell {
@@ -40,6 +41,11 @@
 
         .selected {
             background-color: lightblue;
+        }
+
+        .grid-image.selected-image{
+            border: 2px solid black;
+          
         }
 
         
@@ -70,6 +76,7 @@
             height: 100px;
             object-fit: contain;
             cursor: pointer;
+            z-index: 0;
         }
 
         .grid-image {
@@ -79,42 +86,60 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            z-index: 1;
+            z-index: 10;
+            border: 2px solid transparent;
+            
         }
-        
+
      
         
 
     </style>
 </head>
 <body>
+    @* WIP slet billede
+    <button onclick="removeImage()"></button> *@
     <div id="grid"></div>
-    
-   
-   
-
    
     <!-- Gallery Modal -->
     <div id="gallery" class="gallery">
         <button onclick="closeGallery()">Exit</button>
         <div class="gallery-images">
             <!-- Image elements will be added dynamically here -->
-        </div>
+        </div>       
     </div>
     
 
 
     <script>
         var selectedBox = null;
+        var selectedImage = null;
+
+        // WIP slet billede
+        // function removeImage() {
+        //     selectedBox.removeChild(img);
+        // }
+
+        function selectImage(gridImg) {
+            if (selectedImage !== null) {
+                selectedImage.classList.remove('selected-image');
+                
+            }
+            gridImg.classlist.add('selected-image')
+            
+
+            selectedImage = gridImg;
+        }
 
         function selectBox(box) {
             if (selectedBox !== null) {
                 selectedBox.classList.remove('selected');
-                selectedBox.style.backgroundColor = '';
+                
             }
 
             box.classList.add('selected');
-            box.style.backgroundColor = "lightblue";
+            
+            
 
             selectedBox = box;
         }
@@ -175,11 +200,13 @@
             if (selectedBox !== null) {
                 var img = document.createElement('img');
                 img.className = 'grid-image';
-                console.log("Bobs your uncle")
                 // If image exists, set the source and attach click event
                 img.src = image.src;
                
                 selectedBox.appendChild(img);
+                img.addEventListener('click', function () {
+                    this.classList.add('selected-image')
+                });
                 closeGallery();
             }
         }
@@ -194,8 +221,10 @@
             cell.id = 'cell' + (i + 1);
             cell.className = "cell"
             cell.addEventListener('click', function () {
-                selectBox(cell);
-            });
+                
+                    selectBox(cell);
+                    
+            });            
             cell.addEventListener('dblclick', function () {
                 openGallery();
             });
