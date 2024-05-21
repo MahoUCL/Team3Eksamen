@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.WebUIAPITest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.WebUIAPITest.Client", "HundeRally.WebUIAPITest\HundeRally.WebUIAPITest.Client\HundeRally.WebUIAPITest.Client.csproj", "{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverter", "ImageConverter\ImageConverter.csproj", "{156AC875-1242-42FB-9B1C-EAB8B15D7BE5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Release|Any CPU.Build.0 = Release|Any CPU
-		{156AC875-1242-42FB-9B1C-EAB8B15D7BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{156AC875-1242-42FB-9B1C-EAB8B15D7BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{156AC875-1242-42FB-9B1C-EAB8B15D7BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{156AC875-1242-42FB-9B1C-EAB8B15D7BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
