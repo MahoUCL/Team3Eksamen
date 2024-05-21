@@ -4,6 +4,7 @@ using HundeRally.WebUI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HundeRally.WebUI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240521111002_obstacles")]
+    partial class obstacles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,7 +262,7 @@ namespace HundeRally.WebUI.Migrations
 
                     b.HasIndex("DifficultyNameId");
 
-                    b.ToTable("obstacle", (string)null);
+                    b.ToTable("obstacle");
                 });
 
             modelBuilder.Entity("WebUI.Domain.Entity.ObstacleDifficulty", b =>
@@ -279,7 +282,7 @@ namespace HundeRally.WebUI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("obstacle_difficulty", (string)null);
+                    b.ToTable("obstacle_difficulty");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
