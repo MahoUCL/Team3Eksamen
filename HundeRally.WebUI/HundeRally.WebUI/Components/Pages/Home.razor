@@ -1,0 +1,240 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Home</PageTitle>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid of Boxes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        #grid {
+            border: 1px solid #000;
+            display: grid;
+            grid-template-columns: repeat(30, 1fr);
+            grid-template-rows: repeat(22, 1fr);
+            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
+            background-size: cover;
+            max-height: calc(100vh - 100px);
+            aspect-ratio: 15 / 11;
+            z-index: -1;
+            pointer-events: auto;
+        }
+
+        .cell {
+            border: 1px solid #efefef;
+            aspect-ratio: 1 / 1;
+            transition: all .3s ease;
+            overflow: visible;
+            position: relative;
+            justify-content: center;
+        }
+
+
+        .selected {
+            background-color: lightblue;
+        }
+
+        .grid-image.selected-image{
+            border: 2px solid black;
+          
+        }
+
+        
+
+        
+
+        .gallery {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+            
+        }
+
+        .gallery-image {            
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            cursor: pointer;
+            z-index: 0;
+        }
+
+        .grid-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+            border: 2px solid transparent;
+            
+        }
+
+     
+        
+
+    </style>
+</head>
+<body>
+    @* WIP slet billede
+    <button onclick="removeImage()"></button> *@
+    <div id="grid"></div>
+   
+    <!-- Gallery Modal -->
+    <div id="gallery" class="gallery">
+        <button onclick="closeGallery()">Exit</button>
+        <div class="gallery-images">
+            <!-- Image elements will be added dynamically here -->
+        </div>       
+    </div>
+    
+
+
+    <script>
+        var selectedBox = null;
+        var selectedImage = null;
+
+        // WIP slet billede
+        // function removeImage() {
+        //     selectedBox.removeChild(img);
+        // }
+
+        function selectImage(gridImg) {
+            if (selectedImage !== null) {
+                selectedImage.classList.remove('selected-image');
+                
+            }
+            gridImg.classlist.add('selected-image')
+            
+
+            selectedImage = gridImg;
+        }
+
+        function selectBox(box) {
+            if (selectedBox !== null) {
+                selectedBox.classList.remove('selected');
+                
+            }
+
+            box.classList.add('selected');
+            
+            
+
+            selectedBox = box;
+        }
+
+        function openGallery() {
+            var gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clear previous images
+
+            // Create exit button
+            var exitButton = document.createElement('button');
+            exitButton.textContent = 'Exit';
+            exitButton.onclick = function () {
+                closeGallery();
+            };
+            gallery.appendChild(exitButton);
+
+            
+            for (var i = 1; i < 500; i++) {
+                
+                
+                var imageUrl = '/images/' + i + '.png'; // Adjust the path as needed
+
+                // Check if the image exists
+                fetch(imageUrl, { method: 'HEAD' })
+                    .then(response => {
+                        console.log(response)
+                        if (response.ok) {
+                            var img = document.createElement('img');
+                            img.className = 'gallery-image';
+                            console.log("Bobs your uncle")
+                            // If image exists, set the source and attach click event
+                            img.src = response.url;
+                            img.addEventListener('click', function () {
+                                selectImage(this);
+                            });
+                            gallery.appendChild(img);
+
+                        }
+                        else {
+                            console.error('Error checking image existence:');
+                        }
+                    })
+                    .catch (error => {
+                    console.error('Error checking image existence:', error);
+
+                    });
+
+            }
+            gallery.style.display = 'block';
+        }
+
+        function closeGallery() {
+            var gallery = document.getElementById('gallery');
+            gallery.style.display = 'none';
+        }
+
+        function selectImage(image) {
+            if (selectedBox !== null) {
+                var img = document.createElement('img');
+                img.className = 'grid-image';
+                // If image exists, set the source and attach click event
+                img.src = image.src;
+               
+                selectedBox.appendChild(img);
+                img.addEventListener('click', function () {
+                    this.classList.add('selected-image')
+                });
+                closeGallery();
+            }
+        }
+        var grid = document.getElementById('grid');
+
+        let rows = 22;
+        let columns = 30;
+        let cells = rows * columns;
+
+        for (let i = 0; i < cells; i++) {
+            let cell = document.createElement('div');
+            cell.id = 'cell' + (i + 1);
+            cell.className = "cell"
+            cell.addEventListener('click', function () {
+                
+                    selectBox(cell);
+                    
+            });            
+            cell.addEventListener('dblclick', function () {
+                openGallery();
+            });
+            grid.appendChild(cell);
+        }
+
+    </script>
+    <h2>Click to select, Double-click for gallery</h2>
+</body>
+</html>
+
