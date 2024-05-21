@@ -1,5 +1,8 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
 
 <PageTitle>Home</PageTitle>
 
@@ -46,11 +49,8 @@
         .grid-image.selected-image{
             border: 2px solid black;
           
-        }
+        }       
 
-        
-
-        
 
         .gallery {
             display: none;
@@ -93,8 +93,6 @@
             
         }
 
-     
-        
 
     </style>
 </head>
