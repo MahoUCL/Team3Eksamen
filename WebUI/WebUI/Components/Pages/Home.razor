@@ -16,42 +16,41 @@
             overflow: hidden; /* Prevent scrolling */
         }
 
-        .grid-container {
+        #grid {
+            border: 1px solid #000;
             display: grid;
-            grid-template-columns: repeat(6, 133px);
-            grid-template-rows: repeat(4, 142px);
-            gap: 2px;
-            margin: 140px;
-            position: relative;
+            grid-template-columns: repeat(30, 1fr);
+            grid-template-rows: repeat(22, 1fr);
+            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
+            background-size: cover;
+            max-height: calc(100vh - 100px);
+            aspect-ratio: 15 / 11;
+            z-index: -1;
+            pointer-events: auto;
         }
 
-        .box {
-            width: 100%;
-            height: 100%;
-            
-            cursor: pointer;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
+        .cell {
+            border: 1px solid #efefef;
+            aspect-ratio: 1 / 1;
+            transition: all .3s ease;
+            overflow: visible;
+            position: relative;
+            justify-content: center;
         }
+
 
         .selected {
             background-color: lightblue;
         }
 
-        .background-image {
-            position: fixed;
-            top: 140px;
-            left: 345px;
-            width: 960px;
-            height: 720px;
-            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
-            background-size: cover;
-            opacity: 0.3; /* Adjust the opacity as needed */
-            pointer-events: none; /* Makes the background image click-through */
-            z-index: 1/* Set the z-index to be behind everything */
+        .grid-image.selected-image{
+            border: 2px solid black;
+          
         }
+
+        
+
+        
 
         .gallery {
             display: none;
@@ -71,82 +70,78 @@
             align-items: center;
             height: 100%;
             padding: 20px;
+            
         }
 
-        .gallery-image {
+        .gallery-image {            
             width: 100px;
             height: 100px;
             object-fit: contain;
             cursor: pointer;
+            z-index: 0;
         }
-        
+
+        .grid-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+            border: 2px solid transparent;
+            
+        }
+
      
         
 
     </style>
 </head>
 <body>
-    
-    <div class="grid-container">
-        <!-- Row 1 -->
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-
-        <!-- Row 2 -->
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-
-        <!-- Row 3 -->
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-
-        <!-- Row 4 -->
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-        <div class="box" onclick="selectBox(this)" ondblclick="openGallery()"></div>
-
-        
-    </div>
-    <!-- Background Image -->
-    <div class="background-image"></div>
-
+    @* WIP slet billede
+    <button onclick="removeImage()"></button> *@
+    <div id="grid"></div>
    
     <!-- Gallery Modal -->
     <div id="gallery" class="gallery">
         <button onclick="closeGallery()">Exit</button>
         <div class="gallery-images">
             <!-- Image elements will be added dynamically here -->
-        </div>
+        </div>       
     </div>
-    @* </div> *@
+    
 
 
     <script>
         var selectedBox = null;
+        var selectedImage = null;
+
+        // WIP slet billede
+        // function removeImage() {
+        //     selectedBox.removeChild(img);
+        // }
+
+        function selectImage(gridImg) {
+            if (selectedImage !== null) {
+                selectedImage.classList.remove('selected-image');
+                
+            }
+            gridImg.classlist.add('selected-image')
+            
+
+            selectedImage = gridImg;
+        }
 
         function selectBox(box) {
             if (selectedBox !== null) {
                 selectedBox.classList.remove('selected');
-                selectedBox.style.backgroundColor = '';
+                
             }
 
             box.classList.add('selected');
-            box.style.backgroundColor = "lightblue";
+            
+            
 
             selectedBox = box;
         }
@@ -205,15 +200,38 @@
 
         function selectImage(image) {
             if (selectedBox !== null) {
-                selectedBox.style.backgroundImage = "url('" + image.src + "')";
-                selectedBox.style.backgroundSize = "contain";
-                selectedBox.style.backgroundPosition = "center";
-                selectedBox.innerHTML = '';
-                var gallery = document.getElementById('gallery');
-                gallery.style.display = 'none';
+                var img = document.createElement('img');
+                img.className = 'grid-image';
+                // If image exists, set the source and attach click event
+                img.src = image.src;
+               
+                selectedBox.appendChild(img);
+                img.addEventListener('click', function () {
+                    this.classList.add('selected-image')
+                });
+                closeGallery();
             }
         }
+        var grid = document.getElementById('grid');
 
+        let rows = 22;
+        let columns = 30;
+        let cells = rows * columns;
+
+        for (let i = 0; i < cells; i++) {
+            let cell = document.createElement('div');
+            cell.id = 'cell' + (i + 1);
+            cell.className = "cell"
+            cell.addEventListener('click', function () {
+                
+                    selectBox(cell);
+                    
+            });            
+            cell.addEventListener('dblclick', function () {
+                openGallery();
+            });
+            grid.appendChild(cell);
+        }
 
     </script>
     <h2>Click to select, Double-click for gallery</h2>
