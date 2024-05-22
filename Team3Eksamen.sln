@@ -10,9 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUIAPITest", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUIAPITest.Client", "HundeRally.WebUIAPITest\HundeRally.WebUIAPITest.Client\HundeRally.WebUIAPITest.Client.csproj", "{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.WebUI", "HundeRally.WebUI\HundeRally.WebUI\HundeRally.WebUI.csproj", "{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUI", "HundeRally.WebUI\HundeRally.WebUI\HundeRally.WebUI.csproj", "{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.WebUI.Client", "HundeRally.WebUI\HundeRally.WebUI.Client\HundeRally.WebUI.Client.csproj", "{D45C6832-D863-4417-B122-A8CBAC47690B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUI.Client", "HundeRally.WebUI\HundeRally.WebUI.Client\HundeRally.WebUI.Client.csproj", "{D45C6832-D863-4417-B122-A8CBAC47690B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

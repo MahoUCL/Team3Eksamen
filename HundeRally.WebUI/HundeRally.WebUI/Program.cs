@@ -2,6 +2,7 @@ using HundeRally.WebUI.Client.Pages;
 using HundeRally.WebUI.Components;
 using HundeRally.WebUI.Components.Account;
 using HundeRally.WebUI.Data;
+using HundeRally.WebUI.Domain.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
+
+//Image service til at indeksere alle billeder fra wwwroot/images
+builder.Services.AddTransient<ImageService>();
+
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
