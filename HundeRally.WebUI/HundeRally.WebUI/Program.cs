@@ -14,7 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 //Image service til at indeksere alle billeder fra wwwroot/images
-builder.Services.AddTransient<ImageService>();
+builder.Services.AddScoped<ImageService>();
 
 
 builder.Services.AddCascadingAuthenticationState();

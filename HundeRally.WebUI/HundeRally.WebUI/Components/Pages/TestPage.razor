@@ -1,6 +1,7 @@
 ﻿@using Domain.Services
 @page "/TestPage"
 @inject ImageService ImageService
+@inject Cell Cell
 
 
 <div id="grid">
@@ -24,6 +25,39 @@
 }
 
 @code {
+    public class Cell
+    {
+        public int Id { get; set; }
+        public bool IsSelected { get; set; }
+        public Image SelectedImage { get; set; }
+    }
+
+    private List<Cell> grid = new List<Cell>();
+
+    private void SelectBox(int index)
+    {
+        foreach (var cell in grid)
+        {
+            cell.IsSelected = false;
+        }
+        grid[index].IsSelected = true;
+    }
+
+    private void SelectImage(Image image)
+    {
+        var selectedCell = grid.FirstOrDefault(cell => cell.IsSelected);
+        if (selectedCell != null)
+        {
+            selectedCell.SelectedImage = image;
+        }
+    }
+
+    private string GetGridState()
+    {
+        return JsonSerializer.Serialize(grid);
+    }
+
+
     private int cells = 22 * 30;
     private int? selectedBox;
     private Image? selectedImage;
@@ -68,7 +102,8 @@
     }
 }
 
-@* <h1>Image Gallery</h1>
+@* 
+<h1>Image Gallery</h1>
 
 <div class="image-gallery">
     @foreach (var imageName in ImageService.GetImageNames())
@@ -77,3 +112,4 @@
     }
 </div>
  *@
+
