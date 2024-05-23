@@ -45,6 +45,8 @@
     {
         // Load image paths from wwwroot/images directory
         imagePaths = LoadImagePaths();
+        // JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");
+
     }
 
     private void SelectImage(string imageName)
@@ -66,10 +68,11 @@
 
 <style>
     .grid {
-        width: 80vw;
-        height: 80vh;
+        width: 90vw;
+        height: 90vh;
         background-image: url('/Bane/image1.jpg');
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     .cell {
