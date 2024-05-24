@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Gallery.razor" />
     <Content Remove="Components\Pages\TestPage.razor" />
     <Content Remove="wwwroot\Home.razor.css" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll" />
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
+    <None Include="Components\Pages\Gallery.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -186,6 +188,14 @@
 
   <ItemGroup>
     <Folder Include="bin\Release\net8.0\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\Gallery.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Pages\Gallery.razor" />
   </ItemGroup>
 
 </Project>

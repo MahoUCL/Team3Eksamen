@@ -1,0 +1,39 @@
+﻿@page "/gallery"
+
+@using System.Text.Json
+@using Domain.Entity
+@using Domain.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+
+<h3>Gallery Component</h3>s
+
+<div id="gallery">
+    @foreach (var imagePath in imagePaths.OrderBy(x => x))
+    {
+        <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
+    }
+
+</div>
+@code {
+    private List<string> imagePaths = new List<string>();
+    private int? selectedCell;
+
+    private void SelectCell(int cellId)
+    {
+        selectedCell = cellId;
+        ShowGallery();
+    }
+
+    private async Task ShowGallery()
+    {
+        imagePaths = await JSRuntime.InvokeAsync<List<string>>("showGallery", selectedCell);
+        StateHasChanged();
+    }
+
+    private void SelectImage(string imagePath)
+    {
+        Console.WriteLine(imagePath);
+    }
+
+}

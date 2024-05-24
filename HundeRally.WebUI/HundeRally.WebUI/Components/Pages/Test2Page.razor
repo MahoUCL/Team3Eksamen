@@ -1,4 +1,6 @@
 ﻿@inject ImageService ImageService
+@inject IJSRuntime JSRuntime
+
 
 @page "/test2"
 @using System.Text.Json
@@ -6,6 +8,17 @@
 @using Domain.Services
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.JSInterop
+
+
+@* This is a test
+ *@
+<div id="gallery">
+    @foreach (var imagePath in imagePaths.OrderBy(x => x))
+    {
+        <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
+    }
+
+</div>
 
 <div>
     <table class="grid">
@@ -15,8 +28,8 @@
                 @for (int j = 0; j < 38; j++)
                 {
                     var cellId = i * 38 + j;
-                    <td class="cell">
-                        <button @onclick="() => SelectCell(cellId)" class="select-button"></button>
+                    <td class="cell" >
+                        <button class="select-button" @onclick="() => SelectCell(cellId)"></button>
                     </td>
                 }
             </tr>
@@ -24,28 +37,44 @@
     </table>
 </div>
 
-<div id="gallery" style="display: none;">
-    @foreach (var imagePath in imagePaths)
-    {
-        <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
-    }
-</div>
+@if (isGalleryVisible)
+{
+    <div id="gallery">
+        @foreach (var imagePath in imagePaths.OrderBy(x => x))
+        {
+            <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
+        }
+
+    </div>
+}
 
 @code {
+    private bool isGalleryVisible = false;
+
     private List<string> imagePaths = new List<string>();
     private int? selectedCell;
+
+    private List<string> LoadImagePaths()
+    {
+        // Logic to load image paths from wwwroot/images directory
+        // Replace this with your own implementation
+        return ImageService.GetImageNames().OrderBy(x => x).ToList();
+    }
 
     private void SelectCell(int cellId)
     {
         selectedCell = cellId;
-        ShowGallery();
+        isGalleryVisible = true;
+        ShowGallery(ImageService);
     }
 
-    private void ShowGallery()
+    private async void ShowGallery(ImageService imageService)
     {
         // Load image paths from wwwroot/images directory
         imagePaths = LoadImagePaths();
-        // JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");
+
+
+        // await JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");
 
     }
 
@@ -58,12 +87,7 @@
         }
     }
 
-    private List<string> LoadImagePaths()
-    {
-        // Logic to load image paths from wwwroot/images directory
-        // Replace this with your own implementation
-        return ImageService.GetImageNames().ToList();
-    }
+    
 }
 
 <style>
