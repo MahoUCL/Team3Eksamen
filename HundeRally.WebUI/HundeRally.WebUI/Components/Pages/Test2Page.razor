@@ -8,6 +8,7 @@
 @using Domain.Services
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.JSInterop
+@using System.Diagnostics
 
 
 @* This is a test
@@ -29,6 +30,7 @@
                 {
                     var cellId = i * 38 + j;
                     <td class="cell" >
+
                         <button class="select-button" @onclick="() => SelectCell(cellId)"></button>
                     </td>
                 }
@@ -61,17 +63,20 @@
         return ImageService.GetImageNames().OrderBy(x => x).ToList();
     }
 
-    private void SelectCell(int cellId)
+    public void SelectCell(int cellId)
     {
+       
         selectedCell = cellId;
         isGalleryVisible = true;
-        ShowGallery(ImageService);
+        ShowGallery();
+
     }
 
-    private async void ShowGallery(ImageService imageService)
+    private async void ShowGallery()
     {
         // Load image paths from wwwroot/images directory
-        imagePaths = LoadImagePaths();
+       imagePaths = LoadImagePaths();
+
 
 
         // await JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");

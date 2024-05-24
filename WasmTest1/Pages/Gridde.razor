@@ -1,0 +1,41 @@
+﻿@page "/grid"
+<h3>Gridde</h3>
+
+<style>
+    .grid {
+        width: 90vw;
+        height: 90vh;
+        background-image: url('/Bane/image1.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .cell {
+        position: relative;
+    }
+</style>
+
+<div>
+    <table class="grid">
+        @for (int i = 0; i < 22; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 38; j++)
+                {
+                    var cellId = i * 38 + j;
+                    <td class="cell">
+                        <button class="select-button" @onclick="() => SelectCell(cellId)"></button>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+@code {
+    public void SelectCell(int cellId)
+    {
+
+        selectedCell = cellId;
+
+    }
+}

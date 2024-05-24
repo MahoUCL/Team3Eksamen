@@ -1,0 +1,62 @@
+﻿@page "/gallery"
+@using Microsoft.AspNetCore.Components.Web
+
+<h3 class="title">@title</h3>
+
+<button @onclick="OpenGallery">Open Gallery</button>
+
+<style>
+    .title {
+        color: hotpink;
+    }
+    .gallery {
+        margin: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .gallery img {
+            height: 100px;
+            margin: 10px;
+        }
+</style>
+
+@if (showGallery)
+{
+    <div class="gallery">
+        <button @onclick="CloseGallery">Close Gallery</button>
+        @foreach (var image in images)
+        {
+            <img src="@image" @onclick="() => SelectImage(image)" @onerror="() => HandleImageError(image)" />
+        }
+    </div>
+}
+
+@code {
+    private string title = "Galleri";
+    private bool showGallery = false;
+    private List<string> images = Enumerable.Range(1, 500).Select(i => $"/images/{i}.png").ToList();
+    private string selectedImage;
+
+    private void OpenGallery()
+    {
+        showGallery = true;
+    }
+
+    private void CloseGallery()
+    {
+        showGallery = false;
+    }
+
+    private void SelectImage(string image)
+    {
+        selectedImage = image;
+        CloseGallery();
+    }
+
+    private void HandleImageError(string image)
+    {
+        images.Remove(image);
+    }
+}
