@@ -1,0 +1,40 @@
+﻿@page "/obstacles"
+@inject HttpClient Http
+@using HundeRally.Wasm.Models
+
+<h3>Obstacles</h3>
+
+@if (obstacles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obstacle in obstacles)
+            {
+                <tr>
+                    <td>@obstacle.Name</td>
+                    <td>@obstacle.Description</td>
+                </tr>
+            }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Obstacle[] obstacles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        obstacles = await Http.GetFromJsonAsync<Obstacle[]>("https://localhost:7010/api/Obstacle");
+    }
+}
