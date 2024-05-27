@@ -34,12 +34,15 @@
 }
 
 @code {
+
+    [Parameter]
+    public bool showGallery { get; set; }
+
     private string title = "Galleri";
-    private bool showGallery = false;
     private List<string> images = Enumerable.Range(1, 500).Select(i => $"/images/{i}.png").ToList();
     private string selectedImage;
 
-    private void OpenGallery()
+    public void OpenGallery()
     {
         showGallery = true;
     }
