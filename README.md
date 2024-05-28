@@ -38,7 +38,7 @@ Unload HundeRally.Wasm, HundeRally.WebUI og HundeRally.WebUI.Client.
 
 1. Åben Package Manager Console
 2. Tjek at HundeRally.Api er valgt som default project i dropdown menuen
- ![PMC API](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/5ecfcbe8-71a1-4dca-bcf6-827439c62422)  
+![PMC API](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/9789939d-06b0-4ae8-b53f-8c11c9ac76fc)
 3. Skriv: ```Update-database```
 
 Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
@@ -46,7 +46,7 @@ Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
 
 1. Åben Package Manager Console
 2. Tjek at HundeRally.WebUI er valgt som default project i dropdown menuen
-![PMC WebUI](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/1ce65f21-b2f3-48cc-8ec9-dc5f6e4dda01)   
+![PMC WebUI](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/639adb4b-1f44-4097-9a11-e9f1b2d741dd)
 3. Skriv: ```Update-database```
 
 
