@@ -38,6 +38,7 @@ Unload HundeRally.Wasm, HundeRally.WebUI og HundeRally.WebUI.Client.
 
 1. Åben Package Manager Console
 2. Tjek at HundeRally.Api er valgt som default project i dropdown menuen
+ ![PMC API](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/5ecfcbe8-71a1-4dca-bcf6-827439c62422)  
 3. Skriv: ```Update-database```
 
 Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
@@ -45,6 +46,7 @@ Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
 
 1. Åben Package Manager Console
 2. Tjek at HundeRally.WebUI er valgt som default project i dropdown menuen
+![PMC WebUI](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/1ce65f21-b2f3-48cc-8ec9-dc5f6e4dda01)   
 3. Skriv: ```Update-database```
 
 
@@ -68,4 +70,7 @@ Unload HundeRally.API og HundeRally.Wasm
 
 Kør med HundeRally.WebUI som startup project.
 
+Lav en ny bruger og bekræft emailen på den efterfølgende side:
+![Register](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/5ef69671-7d2e-4533-8bbe-c66c2abbe386)
+Nu kan du logge ind med din egen bruger.
 
