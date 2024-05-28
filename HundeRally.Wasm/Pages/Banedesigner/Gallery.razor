@@ -1,5 +1,6 @@
 ﻿@page "/gallery"
 @using Microsoft.AspNetCore.Components.Web
+@inject IJSRuntime JSRuntime
 
 
 <button @onclick="OpenGallery">Open Gallery</button>
@@ -30,8 +31,7 @@
 }
 
 @code {
-
-    [Parameter]
+   [Parameter]
     public bool showGallery { get; set; }
 
     private string title = "Galleri";
