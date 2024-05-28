@@ -136,7 +136,7 @@ namespace HundeRally.Logic.Entity
                 return false;
             }
 
-            // Check for consecutive right-handled obstacles
+            // Check for consecutive right-handed obstacles
             int consecutiveHøjreHandletCount = 0;
             for (int i = 0; i < obstacleCount; i++)
             {
@@ -154,7 +154,7 @@ namespace HundeRally.Logic.Entity
                 }
             }
 
-            // Check if first obstacle is right-handled
+            // Check if first obstacle is right-handed
             if (Obstacles[0].Type != ObstacleType.HøjreHandlet)
             {
                 return false;

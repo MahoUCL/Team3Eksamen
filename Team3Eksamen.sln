@@ -2,14 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.Logic", "HundeRally.Logic\HundeRally.Logic.csproj", "{C812608D-5819-4D81-980A-DF0E22450423}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebAPI", "HundeRally.WebAPI\HundeRally.WebAPI.csproj", "{38AD9C76-365A-4398-A6F9-473A8A467447}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUIAPITest", "HundeRally.WebUIAPITest\HundeRally.WebUIAPITest\HundeRally.WebUIAPITest.csproj", "{99CEF3D0-3A9B-46D2-8725-1E95BCA1BD55}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUIAPITest.Client", "HundeRally.WebUIAPITest\HundeRally.WebUIAPITest.Client\HundeRally.WebUIAPITest.Client.csproj", "{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUI", "HundeRally.WebUI\HundeRally.WebUI\HundeRally.WebUI.csproj", "{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUI.Client", "HundeRally.WebUI\HundeRally.WebUI.Client\HundeRally.WebUI.Client.csproj", "{D45C6832-D863-4417-B122-A8CBAC47690B}"
@@ -26,22 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C812608D-5819-4D81-980A-DF0E22450423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C812608D-5819-4D81-980A-DF0E22450423}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C812608D-5819-4D81-980A-DF0E22450423}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C812608D-5819-4D81-980A-DF0E22450423}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38AD9C76-365A-4398-A6F9-473A8A467447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38AD9C76-365A-4398-A6F9-473A8A467447}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38AD9C76-365A-4398-A6F9-473A8A467447}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38AD9C76-365A-4398-A6F9-473A8A467447}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99CEF3D0-3A9B-46D2-8725-1E95BCA1BD55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99CEF3D0-3A9B-46D2-8725-1E95BCA1BD55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99CEF3D0-3A9B-46D2-8725-1E95BCA1BD55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99CEF3D0-3A9B-46D2-8725-1E95BCA1BD55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC7137BC-22FF-4CA5-B36A-EAAA69E94383}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA586213-DF9D-4C7F-91F9-0BC5ECF8523B}.Release|Any CPU.ActiveCfg = Release|Any CPU
