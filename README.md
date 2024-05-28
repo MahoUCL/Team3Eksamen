@@ -23,7 +23,7 @@ Den anden er skrevet i C#, men er ikke funktionel. Vi ville forsøge at genopbyg
 
 For windows: 
 1. Åben CMD
-2. Opret en lokal SQL server med kommando: sqllocaldb c localdb1
+2. Opret en lokal SQL server med kommando: ```sqllocaldb c localdb1```
 
 Nu er databasen klar til sammen med connectionString fra projektet
 
@@ -37,13 +37,13 @@ Unload HundeRally.Wasm, HundeRally.WebUI og HundeRally.WebUI.Client.
 #### Med kun HundeRally.Api loaded:
 
 1. Åben Package Manager Console
-2. Skriv: Update-database
+2. Skriv: ```Update-database```
 
 Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
 #### Med kun HundeRally.WebUI og HundeRally.WebUI.Client loaded:
 
 1. Åben Package Manager Console
-2. Skriv: Update-database
+2. Skriv: ```Update-database```
 
 Hvis den fejler skal man kontrollere at der i toppen af package Manager console er valgt det rigtige projekt
 
