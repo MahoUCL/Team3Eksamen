@@ -19,7 +19,8 @@
         }
 </style>
 
-@if (showGallery)
+@* Goes through images 1 to 500 and adds all existing images to the gallery. Non-existing images are caught. 
+ *@@if (showGallery)
 {
     <div class="gallery">
         <button @onclick="CloseGallery">Close Gallery</button>

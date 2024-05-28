@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HundeRally.API.Domain.Entities
+    // No code in this class has been implemented in any way. This is an example of how course validation logic could look like
 {
     public class ObstacleCourse
     {

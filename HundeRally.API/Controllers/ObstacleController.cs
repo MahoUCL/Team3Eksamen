@@ -67,15 +67,7 @@ namespace HundeRally.API.Controllers
             return NoContent();
         }
 
-       // POST: api/Obstacle
-       //[HttpPost]
-       // public async Task<ActionResult<Obstacle>> PostObstacle(Obstacle obstacle)
-       // {
-       //     _context.Obstacles.Add(obstacle);
-       //     await _context.SaveChangesAsync();
 
-       //     return CreatedAtAction("GetObstacle", new { id = obstacle.Id }, obstacle);
-       // }
         [HttpPost]
         public async Task<ActionResult<Obstacle>> PostObstacle(CreateObstacleDto createObstacleDto)
         {

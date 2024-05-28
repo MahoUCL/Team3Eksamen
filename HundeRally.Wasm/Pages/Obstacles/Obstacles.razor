@@ -16,8 +16,7 @@ else
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Number</th> <!-- Add this line -->
-
+                <th>Number</th> 
             </tr>
         </thead>
         <tbody>
@@ -26,11 +25,9 @@ else
                 <tr>
                     <td>@obstacle.Name</td>
                     <td>@obstacle.Description</td>
-                    <td>@obstacle.Number</td> <!-- And this line -->
-
+                    <td>@obstacle.Number</td> 
                 </tr>
-            }
-            
+            }            
         </tbody>
     </table>
 }
@@ -39,15 +36,16 @@ else
 <button class="btn btn-primary" @onclick="NavigateToCreateObstacle">Create Obstacle</button>
 
 @code {
+    // Routing for the create obstacle button
     private void NavigateToCreateObstacle()
     {
         NavigationManager.NavigateTo("/createobstacle");
     }
-}
 
-@code {
+    // Array for the for loop
     private Obstacle[] obstacles;
 
+    // Makes the get request at runtime for obstacles
     protected override async Task OnInitializedAsync()
     {
         obstacles = await Http.GetFromJsonAsync<Obstacle[]>("https://localhost:7010/api/Obstacle");

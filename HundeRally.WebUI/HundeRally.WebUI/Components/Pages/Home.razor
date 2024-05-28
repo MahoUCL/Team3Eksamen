@@ -6,25 +6,16 @@
 
 <PageTitle>Home</PageTitle>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid of Boxes</title>
+
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent scrolling */
-        }
 
         #grid {
             border: 1px solid #000;
             display: grid;
             grid-template-columns: repeat(30, 1fr);
             grid-template-rows: repeat(22, 1fr);
-            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
+            background-image: url('Bane/image1.jpg'); /* Image Path of standard 18x25 course */
             background-size: cover;
             max-height: calc(100vh - 100px);
             aspect-ratio: 15 / 11;
@@ -46,10 +37,9 @@
             background-color: lightblue;
         }
 
-        .grid-image.selected-image{
+        .grid-image.selected-image {
             border: 2px solid black;
-          
-        }       
+        }
 
 
         .gallery {
@@ -70,10 +60,9 @@
             align-items: center;
             height: 100%;
             padding: 20px;
-            
         }
 
-        .gallery-image {            
+        .gallery-image {
             width: 100px;
             height: 100px;
             object-fit: contain;
@@ -81,7 +70,7 @@
             z-index: 0;
         }
 
-        .grid-image {
+        .grid-image { /* Overflow is visible by default and we want it to overflow beyond cell borders so images can overlap */
             position: absolute;
             width: 100px;
             height: 100px;
@@ -90,43 +79,35 @@
             transform: translate(-50%,-50%);
             z-index: 10;
             border: 2px solid transparent;
-            
         }
-
 
     </style>
 </head>
 <body>
-    @* WIP slet billede
-    <button onclick="removeImage()"></button> *@
     <div id="grid"></div>
-   
-    <!-- Gallery Modal -->
+
     <div id="gallery" class="gallery">
         <button onclick="closeGallery()">Exit</button>
         <div class="gallery-images">
             <!-- Image elements will be added dynamically here -->
-        </div>       
+        </div>
     </div>
-    
+
 
 
     <script>
         var selectedBox = null;
         var selectedImage = null;
 
-        // WIP slet billede
-        // function removeImage() {
-        //     selectedBox.removeChild(img);
-        // }
+
 
         function selectImage(gridImg) {
             if (selectedImage !== null) {
                 selectedImage.classList.remove('selected-image');
-                
+
             }
             gridImg.classlist.add('selected-image')
-            
+
 
             selectedImage = gridImg;
         }
@@ -134,12 +115,12 @@
         function selectBox(box) {
             if (selectedBox !== null) {
                 selectedBox.classList.remove('selected');
-                
+
             }
 
             box.classList.add('selected');
-            
-            
+
+
 
             selectedBox = box;
         }
@@ -148,7 +129,7 @@
             var gallery = document.getElementById('gallery');
             gallery.innerHTML = ''; // Clear previous images
 
-            // Create exit button
+            // Exit button
             var exitButton = document.createElement('button');
             exitButton.textContent = 'Exit';
             exitButton.onclick = function () {
@@ -156,11 +137,11 @@
             };
             gallery.appendChild(exitButton);
 
-            
+            // Goes through images 1 to 500 and adds all existing images to the gallery. Non-existing images are caught.
             for (var i = 1; i < 500; i++) {
-                
-                
-                var imageUrl = '/images/' + i + '.png'; // Adjust the path as needed
+
+
+                var imageUrl = '/images/' + i + '.png';
 
                 // Check if the image exists
                 fetch(imageUrl, { method: 'HEAD' })
@@ -169,7 +150,6 @@
                         if (response.ok) {
                             var img = document.createElement('img');
                             img.className = 'gallery-image';
-                            console.log("Bobs your uncle")
                             // If image exists, set the source and attach click event
                             img.src = response.url;
                             img.addEventListener('click', function () {
@@ -182,8 +162,8 @@
                             console.error('Error checking image existence:');
                         }
                     })
-                    .catch (error => {
-                    console.error('Error checking image existence:', error);
+                    .catch(error => {
+                        console.error('Error checking image existence:', error);
 
                     });
 
@@ -195,14 +175,14 @@
             var gallery = document.getElementById('gallery');
             gallery.style.display = 'none';
         }
-
+        // Adds the selected gallery image to the previously selected cell and closes the gallery
         function selectImage(image) {
             if (selectedBox !== null) {
                 var img = document.createElement('img');
                 img.className = 'grid-image';
                 // If image exists, set the source and attach click event
                 img.src = image.src;
-               
+
                 selectedBox.appendChild(img);
                 img.addEventListener('click', function () {
                     this.classList.add('selected-image')
@@ -216,15 +196,16 @@
         let columns = 30;
         let cells = rows * columns;
 
+        // Fills the grid with individual cells and gives them an ID
         for (let i = 0; i < cells; i++) {
             let cell = document.createElement('div');
             cell.id = 'cell' + (i + 1);
             cell.className = "cell"
             cell.addEventListener('click', function () {
-                
-                    selectBox(cell);
-                    
-            });            
+
+                selectBox(cell);
+
+            });
             cell.addEventListener('dblclick', function () {
                 openGallery();
             });
@@ -234,7 +215,6 @@
     </script>
     <h2>Click to select, Double-click for gallery</h2>
 </body>
-</html>
 
 @code {
     

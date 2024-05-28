@@ -13,10 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
-//Image service til at indeksere alle billeder fra wwwroot/images
+//Image service for indexing all images from wwwroot/images
 builder.Services.AddScoped<ImageService>();
 
-
+// Usermanagement data access
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
@@ -42,6 +42,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -63,9 +64,7 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveWebAssemblyRenderMode()
-    //Hvis counter.razor slettes, så skal denne slettes herunder.
-    .AddAdditionalAssemblies(typeof(HundeRally.WebUI.Client._Imports).Assembly);
+    .AddInteractiveWebAssemblyRenderMode();
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();

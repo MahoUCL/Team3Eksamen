@@ -8,10 +8,6 @@
 <head>
 
     <style>
-        body {
-            margin: 0;
-            /* overflow: hidden; /* Prevent scrolling */ */
-        }
 
         #grid {
             border: 1px solid #000;
@@ -103,7 +99,7 @@
         var selectedImage = null;
 
 
-
+        
         function selectImage(gridImg) {
             if (selectedImage !== null) {
                 selectedImage.classList.remove('selected-image');
@@ -140,7 +136,7 @@
             };
             gallery.appendChild(exitButton);
 
-
+            // Goes through images 1 to 500 and adds all existing images to the gallery. Non-existing images are caught.
             for (var i = 1; i < 500; i++) {
 
 
@@ -178,7 +174,7 @@
             var gallery = document.getElementById('gallery');
             gallery.style.display = 'none';
         }
-
+        // Adds the selected gallery image to the previously selected cell and closes the gallery
         function selectImage(image) {
             if (selectedBox !== null) {
                 var img = document.createElement('img');
@@ -199,6 +195,7 @@
         let columns = 30;
         let cells = rows * columns;
 
+        // Fills the grid with individual cells and gives them an ID
         for (let i = 0; i < cells; i++) {
             let cell = document.createElement('div');
             cell.id = 'cell' + (i + 1);

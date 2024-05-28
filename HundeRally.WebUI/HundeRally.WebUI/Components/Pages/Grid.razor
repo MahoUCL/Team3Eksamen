@@ -2,7 +2,7 @@
 @inject IJSRuntime JSRuntime
 
 
-@page "/test2"
+@page "/grid"
 @using System.Text.Json
 @using Domain.Entity
 @using Domain.Services
@@ -10,9 +10,7 @@
 @using Microsoft.JSInterop
 @using System.Diagnostics
 
-
-@* This is a test
- *@
+@* Does not work *@
 <div id="gallery">
     @foreach (var imagePath in imagePaths.OrderBy(x => x))
     {
@@ -76,10 +74,6 @@
     {
         // Load image paths from wwwroot/images directory
        imagePaths = LoadImagePaths();
-
-
-
-        // await JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");
 
     }
 

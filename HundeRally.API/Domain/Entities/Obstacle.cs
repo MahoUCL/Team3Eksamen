@@ -7,7 +7,7 @@
             // Set default values
             Number = 0;
             ImageUrl = string.Empty;
-            Type = ObstacleType.Stationær; // or any other default value
+            Type = ObstacleType.Stationær;
         }
 
 

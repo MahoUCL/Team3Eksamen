@@ -5,7 +5,7 @@
 @inject NavigationManager NavigationManager
 <h3>Create Obstacle</h3>
 
-
+@* The CreateObstacleDto class is used in this form instead of the Obstacle.cs to limit input values*@
 <EditForm Model="newObstacleDto" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -32,14 +32,13 @@
         var response = await Http.PostAsJsonAsync("https://localhost:7010/api/Obstacle", newObstacleDto);
         if (response.IsSuccessStatusCode)
         {
-            newObstacleDto = new CreateObstacleDto();
-            // NavigationManager.NavigateTo("/Obstacles");
+            newObstacleDto = new CreateObstacleDto();          
             NavigationManager.NavigateTo("/");
 
         }
         else
         {
-            // Handle error here
+            // Handle error 
         }
     }
 }

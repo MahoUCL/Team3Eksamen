@@ -9,12 +9,13 @@ namespace HundeRally.API.Areas.Identity.Data;
 
 public class APIDataContext : IdentityDbContext<APIUser>
 {
+    //Defines the obstacle table for Entity Framework
     public DbSet<Obstacle> Obstacles { get; set; }
-    
+
     public APIDataContext(DbContextOptions<APIDataContext> options)
         : base(options)
     {
-        
+
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

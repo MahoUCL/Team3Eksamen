@@ -1,6 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using System.Net.Http.Headers;
-
+// Creates a token for the users login data to be stored locally
 namespace HundeRally.Wasm.Models
 {
     public class AuthorizationMessageHandler : DelegatingHandler

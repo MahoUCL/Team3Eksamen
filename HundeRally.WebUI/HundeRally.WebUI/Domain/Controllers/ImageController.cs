@@ -1,6 +1,6 @@
 ﻿using HundeRally.WebUI.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
-
+// Controller for the ImageService
 namespace HundeRally.WebUI.Domain.Controllers
 {
     public class ImagesController : Controller
