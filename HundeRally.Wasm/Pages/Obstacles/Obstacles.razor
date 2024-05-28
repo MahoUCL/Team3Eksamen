@@ -1,6 +1,7 @@
 ﻿@page "/obstacles"
 @inject HttpClient Http
 @using HundeRally.Wasm.Models
+@inject NavigationManager NavigationManager
 
 <h3>Obstacles</h3>
 
@@ -28,6 +29,17 @@ else
             
         </tbody>
     </table>
+}
+
+<a href="/CreateObstacle">Create Obstacle</a>.
+
+<button class="btn btn-primary" @onclick="NavigateToCreateObstacle">Create Obstacle</button>
+
+@code {
+    private void NavigateToCreateObstacle()
+    {
+        NavigationManager.NavigateTo("/createobstacle");
+    }
 }
 
 @code {

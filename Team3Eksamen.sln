@@ -16,9 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.WebUI.Client", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmTest1", "WasmTest1\WasmTest1.csproj", "{A897004C-2091-46F5-B709-CBEB4049FD0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.API", "HundeRally.API\HundeRally.API.csproj", "{02C1D16F-466F-4F17-9695-B50E93DAC99E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.API", "HundeRally.API\HundeRally.API.csproj", "{02C1D16F-466F-4F17-9695-B50E93DAC99E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HundeRally.Wasm", "HundeRally.Wasm\HundeRally.Wasm.csproj", "{25908ACC-0F22-4A30-B44D-09AA94F047F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HundeRally.Wasm", "HundeRally.Wasm\HundeRally.Wasm.csproj", "{25908ACC-0F22-4A30-B44D-09AA94F047F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
