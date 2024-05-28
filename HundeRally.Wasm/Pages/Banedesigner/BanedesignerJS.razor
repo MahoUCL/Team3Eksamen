@@ -1,19 +1,16 @@
 ﻿@page "/BanedesignerJS"
-<h3>BanedesignerJS</h3>
+@using Microsoft.AspNetCore.Components.Web
+<h3>Banedesigner JS</h3>
 
-<PageTitle>Home</PageTitle>
+<PageTitle>BanedesignerJS</PageTitle>
 
-@* <!DOCTYPE html>
-<html lang="en"> *@
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid of Boxes</title>
+
     <style>
         body {
             margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent scrolling */
+            /* overflow: hidden; /* Prevent scrolling */ */
         }
 
         #grid {
@@ -21,7 +18,7 @@
             display: grid;
             grid-template-columns: repeat(30, 1fr);
             grid-template-rows: repeat(22, 1fr);
-            background-image: url('Bane/image1.jpg'); /* Adjust the image path */
+            background-image: url('Bane/image1.jpg'); /* Image Path of standard 18x25 course */
             background-size: cover;
             max-height: calc(100vh - 100px);
             aspect-ratio: 15 / 11;
@@ -76,7 +73,7 @@
             z-index: 0;
         }
 
-        .grid-image {
+        .grid-image { /* Overflow is visible by default and we want it to overflow beyond cell borders so images can overlap */
             position: absolute;
             width: 100px;
             height: 100px;
@@ -90,11 +87,8 @@
     </style>
 </head>
 <body>
-    @* WIP slet billede
-    <button onclick="removeImage()"></button> *@
     <div id="grid"></div>
 
-    <!-- Gallery Modal -->
     <div id="gallery" class="gallery">
         <button onclick="closeGallery()">Exit</button>
         <div class="gallery-images">
@@ -108,10 +102,7 @@
         var selectedBox = null;
         var selectedImage = null;
 
-        // WIP slet billede
-        // function removeImage() {
-        //     selectedBox.removeChild(img);
-        // }
+
 
         function selectImage(gridImg) {
             if (selectedImage !== null) {
@@ -141,7 +132,7 @@
             var gallery = document.getElementById('gallery');
             gallery.innerHTML = ''; // Clear previous images
 
-            // Create exit button
+            // Exit button
             var exitButton = document.createElement('button');
             exitButton.textContent = 'Exit';
             exitButton.onclick = function () {
@@ -153,7 +144,7 @@
             for (var i = 1; i < 500; i++) {
 
 
-                var imageUrl = '/images/' + i + '.png'; // Adjust the path as needed
+                var imageUrl = '/images/' + i + '.png'; 
 
                 // Check if the image exists
                 fetch(imageUrl, { method: 'HEAD' })
@@ -162,7 +153,6 @@
                         if (response.ok) {
                             var img = document.createElement('img');
                             img.className = 'gallery-image';
-                            console.log("Bobs your uncle")
                             // If image exists, set the source and attach click event
                             img.src = response.url;
                             img.addEventListener('click', function () {

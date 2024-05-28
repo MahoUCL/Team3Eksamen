@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowBlazorApp",
         builder =>
         {
-            builder.WithOrigins("https://localhost:7237") 
+            builder.WithOrigins("https://localhost:7237") // Replace with the URL of your Blazor WebAssembly app
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });

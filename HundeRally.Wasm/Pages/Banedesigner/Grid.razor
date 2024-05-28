@@ -1,27 +1,21 @@
 ﻿@page "/grid"
+@using Microsoft.AspNetCore.Components.Web
 
-<h3>Grid</h3>
+<h3>Banedesigner C#</h3>
+
+<PageTitle>BanedesignerC#</PageTitle>
 
 <style>
     .grid {
-/*         width: 90vw;
- */        height: 90vh;
+
+        height: 90vh;
         background-image: url('/Bane/image1.jpg');
         background-size: contain;
-/*         background-repeat: no-repeat;
- */
-
         border: 1px solid #000;
-/*         display: grid;
- */        /* grid-template-columns: repeat(30, 1fr);
-        grid-template-rows: repeat(22, 1fr); */
-        background-image: url('Bane/image1.jpg'); /* Adjust the image path */
-/*         background-size: cover;
- *//*         max-height: calc(100vh - 100px);
- */        aspect-ratio: 15 / 11;
+        background-image: url('Bane/image1.jpg'); 
+        aspect-ratio: 15 / 11;
         z-index: -1;
-/*         pointer-events: auto;
- */    }
+   }
 
     .cell {
         position: relative;
@@ -69,7 +63,6 @@
     {
 
         selectedCell = cellId;
-        Console.WriteLine("SLAP AF!");
         
     }
 }

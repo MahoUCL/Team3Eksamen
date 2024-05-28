@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HundeRally.Logic.Entity
+namespace HundeRally.API.Domain.Entities
 {
     public class ObstacleCourse
     {
