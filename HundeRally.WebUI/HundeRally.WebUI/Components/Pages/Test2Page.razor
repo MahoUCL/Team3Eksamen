@@ -1,0 +1,124 @@
+﻿@inject ImageService ImageService
+@inject IJSRuntime JSRuntime
+
+
+@page "/test2"
+@using System.Text.Json
+@using Domain.Entity
+@using Domain.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@using System.Diagnostics
+
+
+@* This is a test
+ *@
+<div id="gallery">
+    @foreach (var imagePath in imagePaths.OrderBy(x => x))
+    {
+        <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
+    }
+
+</div>
+
+<div>
+    <table class="grid">
+        @for (int i = 0; i < 22; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 38; j++)
+                {
+                    var cellId = i * 38 + j;
+                    <td class="cell" >
+
+                        <button class="select-button" @onclick="() => SelectCell(cellId)"></button>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+
+@if (isGalleryVisible)
+{
+    <div id="gallery">
+        @foreach (var imagePath in imagePaths.OrderBy(x => x))
+        {
+            <img src="@($"~/images/{imagePath}.png")" alt="Image" @onclick="() => SelectImage(imagePath)" />
+        }
+
+    </div>
+}
+
+@code {
+    private bool isGalleryVisible = false;
+
+    private List<string> imagePaths = new List<string>();
+    private int? selectedCell;
+
+    private List<string> LoadImagePaths()
+    {
+        // Logic to load image paths from wwwroot/images directory
+        // Replace this with your own implementation
+        return ImageService.GetImageNames().OrderBy(x => x).ToList();
+    }
+
+    public void SelectCell(int cellId)
+    {
+       
+        selectedCell = cellId;
+        isGalleryVisible = true;
+        ShowGallery();
+
+    }
+
+    private async void ShowGallery()
+    {
+        // Load image paths from wwwroot/images directory
+       imagePaths = LoadImagePaths();
+
+
+
+        // await JSRuntime.InvokeVoidAsync("eval", "document.getElementById('gallery').style.display = 'block';");
+
+    }
+
+    private void SelectImage(string imageName)
+    {
+        if (selectedCell.HasValue)
+        {
+            imagePaths[selectedCell.Value] = imageName;
+            selectedCell = null;
+        }
+    }
+
+    
+}
+
+<style>
+    .grid {
+        width: 90vw;
+        height: 90vh;
+        background-image: url('/Bane/image1.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .cell {
+        position: relative;
+    }
+
+    .select-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .cell:hover .select-button {
+        opacity: 1;
+    }
+</style>

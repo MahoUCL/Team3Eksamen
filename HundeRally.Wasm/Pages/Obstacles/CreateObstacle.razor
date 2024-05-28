@@ -1,0 +1,46 @@
+﻿@page "/CreateObstacle"
+@inject HttpClient Http
+@using HundeRally.Wasm.Models
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager NavigationManager
+<h3>Create Obstacle</h3>
+
+
+<EditForm Model="newObstacleDto" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Name">Name:</label>
+        <InputText id="Name" class="form-control" @bind-Value="newObstacleDto.Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <InputTextArea id="Description" class="form-control" @bind-Value="newObstacleDto.Description" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</EditForm>
+
+@code {
+    private CreateObstacleDto newObstacleDto = new CreateObstacleDto();
+
+    private async Task HandleValidSubmit()
+    {
+
+        var response = await Http.PostAsJsonAsync("https://localhost:7010/api/Obstacle", newObstacleDto);
+        if (response.IsSuccessStatusCode)
+        {
+            newObstacleDto = new CreateObstacleDto();
+            // NavigationManager.NavigateTo("/Obstacles");
+            NavigationManager.NavigateTo("/");
+
+        }
+        else
+        {
+            // Handle error here
+        }
+    }
+}
+
