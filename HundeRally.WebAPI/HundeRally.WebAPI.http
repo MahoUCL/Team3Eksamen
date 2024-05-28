@@ -1,6 +1,0 @@
-@HundeRally.WebAPI_HostAddress = http://localhost:5167
-
-GET {{HundeRally.WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
