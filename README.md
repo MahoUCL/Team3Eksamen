@@ -58,6 +58,8 @@ Load HundeRally.API og HundeRally.Wasm
 Unload HundeRally.WebUI og HundeRally.WebUI.Client
 
 Kør med multiple startup projects og inkluder de to loadede projekter.
+![Multiple startup](https://github.com/MahoUCL/Team3Eksamen/assets/67104446/f7e4b67f-8ed5-4532-a1d3-ef743abaf539)
+
 
 ### Loginprojektet
 
