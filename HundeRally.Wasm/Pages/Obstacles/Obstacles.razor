@@ -16,6 +16,8 @@ else
             <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Number</th> <!-- Add this line -->
+
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@ else
                 <tr>
                     <td>@obstacle.Name</td>
                     <td>@obstacle.Description</td>
+                    <td>@obstacle.Number</td> <!-- And this line -->
+
                 </tr>
             }
             
@@ -31,7 +35,6 @@ else
     </table>
 }
 
-<a href="/CreateObstacle">Create Obstacle</a>.
 
 <button class="btn btn-primary" @onclick="NavigateToCreateObstacle">Create Obstacle</button>
 

@@ -28,11 +28,13 @@
 
     private async Task HandleValidSubmit()
     {
+
         var response = await Http.PostAsJsonAsync("https://localhost:7010/api/Obstacle", newObstacleDto);
         if (response.IsSuccessStatusCode)
         {
             newObstacleDto = new CreateObstacleDto();
             // NavigationManager.NavigateTo("/Obstacles");
+            NavigationManager.NavigateTo("/");
 
         }
         else
