@@ -37,15 +37,16 @@ Unload HundeRally.Wasm, HundeRally.WebUI og HundeRally.WebUI.Client.
 #### Med kun HundeRally.Api loaded:
 
 1. Åben Package Manager Console
-2. Skriv: ```Update-database```
+2. Tjek at HundeRally.Api er valgt som default project i dropdown menuen
+3. Skriv: ```Update-database```
 
 Unload HundeRally.Api og hold HundeRally.Wasm unloaded.
 #### Med kun HundeRally.WebUI og HundeRally.WebUI.Client loaded:
 
 1. Åben Package Manager Console
-2. Skriv: ```Update-database```
+2. Tjek at HundeRally.WebUI er valgt som default project i dropdown menuen
+3. Skriv: ```Update-database```
 
-Hvis den fejler skal man kontrollere at der i toppen af package Manager console er valgt det rigtige projekt
 
 ## Åbning af projekterne
 
